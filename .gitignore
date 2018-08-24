@@ -2,7 +2,6 @@ src/wwwroot/*.xml
 *.log
 *.ospx
 
-
 coverage/stat\.json
 
 bdd-exec\.xml
