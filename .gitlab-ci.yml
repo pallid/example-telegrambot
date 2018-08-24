@@ -1,41 +1,19 @@
-image: "pallid/now-for-oscript:latest"
-
 stages:
-  - build
   - deploy
  
-build:
-  stage: build
-
+deploy:
+  stage: deploy
   script:
   - grep '%ver' -P -R -I -l ./src/packagedef | xargs sed -i 's/%ver/'$CI_COMMIT_REF_NAME'/g'
-  - mkdir ./build
-  - opm build . -mf ./src/packagedef -out ./build
-  - mv ./build/$CI_PROJECT_NAME-$CI_COMMIT_REF_NAME.ospx ./$CI_PROJECT_NAME-$CI_COMMIT_REF_NAME.ospx
-  artifacts:
-    name: "$CI_PROJECT_NAME-$CI_COMMIT_REF_NAME"
-    paths:
-    - $CI_PROJECT_NAME-$CI_COMMIT_REF_NAME.ospx
-  only:
-    - tags  
-
-"deploy to now":
-  stage: deploy
-  variables:
-    GIT_STRATEGY: none
-  script:
-  - opm install -f $CI_PROJECT_NAME-$CI_COMMIT_REF_NAME.ospx -dest .
-  - cd ./$CI_PROJECT_NAME/src && opm install -l && cd ..
-  - NOW_URL=$(now --docker -p --token ${NOW_TOKEN} -n ${CI_PROJECT_NAME} -l --regions bru1 -e ADDRESS_APP=https://${CI_PROJECT_NAME}.now.sh -e PORT_APP=443)
-  - echo "app deploy to $NOW_URL"
-  - echo "create alias for ${NOW_URL} to ${CI_PROJECT_NAME}.now.sh"
-  - now ls ${CI_PROJECT_NAME} -t ${NOW_TOKEN} | head -6
-  - now alias -t ${NOW_TOKEN} set ${NOW_URL} ${CI_PROJECT_NAME}.now.sh
-  - now rm -t ${NOW_TOKEN} ${CI_PROJECT_NAME} -s -y
-  artifacts:
+  - rm .gitignore
+  - mkdir ./src/oscript_modules/telegrambot/
+  - cd ./src/oscript_modules/telegrambot/
+  - git clone https://github.com/pallid/telegrambot.git
+  - cd .
+  - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
+  - git push -f heroku master
+ artifacts:
     when: on_failure
     paths:
     - .
     expire_in: 1 day
-  only:
-    - tags  
