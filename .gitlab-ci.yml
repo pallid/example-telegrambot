@@ -6,7 +6,7 @@ deploy:
   script:
   - grep '%ver' -P -R -I -l ./src/packagedef | xargs sed -i 's/%ver/'$CI_COMMIT_REF_NAME'/g'
   - rm .gitignore
-  - mkdir ./src/oscript_modules/telegrambot/
+  - mkdir -p ./src/oscript_modules/telegrambot/
   - cd ./src/oscript_modules/telegrambot/
   - git clone https://github.com/pallid/telegrambot.git
   - cd .
