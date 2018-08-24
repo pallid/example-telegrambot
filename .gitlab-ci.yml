@@ -10,6 +10,8 @@ deploy:
   - cd ./src/oscript_modules/
   - git clone https://github.com/pallid/telegrambot.git
   - cd .
+  - git config --global user.email "you@example.com"
+  - git config --global user.name "Your Name"
   - git add *
   - git commit -m '$CI_COMMIT_REF_NAME'
   - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
