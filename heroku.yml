@@ -3,6 +3,8 @@ build:
     web: Dockerfile.Heroku
   config:
     TELEGRAM_BOT_TOKEN: $TELEGRAM_BOT_TOKEN
+    LOGGING_LEVEL: DEBUG
+    LOGGING_CONSOLE: TRUE
 
 run:
   web: mono /var/osp.net/OneScript.WebHost.exe --urls http://*:$PORT
