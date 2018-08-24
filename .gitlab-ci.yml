@@ -11,7 +11,8 @@ deploy:
   - cd ./src/oscript_modules/
   - git clone https://github.com/pallid/telegrambot.git
   - cd .
-  - rm -r ./src/oscript_modules/telegrambot/.git/
+  #- rm -r ./src/oscript_modules/telegrambot/.git/
+  - find ./src/oscript_modules/telegrambot/ -type f -name ".*" -delete
   - git config --global user.email "you@example.com"
   - git config --global user.name "Your Name"
   - git add *
