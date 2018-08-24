@@ -8,4 +8,4 @@ ARG TELEGRAM_BOT_TOKEN
 RUN curl -o deb oscript.io/Downloads/latest/deb && dpkg -i deb && cd /app && opm install -l 
 
 # Пока нет в хабе
-RUN cd ./oscript_modules/ && git clone https://github.com/pallid/telegrambot.git
+RUN cd ./oscript_modules/ && curl -o telegrambot.zip https://github.com/pallid/telegrambot/archive/master.zip && unzip telegrambot.zip -d /telegrambot
