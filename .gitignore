@@ -1,7 +1,7 @@
 src/wwwroot/*.xml
 *.log
 *.ospx
-oscript_modules/
+
 
 coverage/stat\.json
 
