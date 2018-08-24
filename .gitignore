@@ -1,0 +1,12 @@
+src/wwwroot/*.xml
+*.log
+*.ospx
+oscript_modules/
+
+coverage/stat\.json
+
+bdd-exec\.xml
+
+coverage/
+diff.txt
+start.cmd

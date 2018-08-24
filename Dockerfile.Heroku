@@ -1,0 +1,6 @@
+FROM pallid/oscript-web-heroku:dev
+
+COPY src /app
+
+# Ставим зависимости указанные в packagedef
+RUN curl -o deb oscript.io/Downloads/latest/deb && dpkg -i deb && cd /app && opm install -l 
