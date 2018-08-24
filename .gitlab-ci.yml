@@ -4,11 +4,6 @@ stages:
 deploy:
   stage: deploy
   script:
-  - grep '%ver' -P -R -I -l ./src/packagedef | xargs sed -i 's/%ver/'$CI_COMMIT_REF_NAME'/g'
-  - git config --global user.email "you@example.com"
-  - git config --global user.name "Your Name"
-  - git add *
-  - git commit -m $CI_COMMIT_REF_NAME
   - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
   - git push -f heroku master
   - curl https://$HEROKU_APP_NAME.herokuapp.com/status
@@ -18,4 +13,4 @@ deploy:
     - .
     expire_in: 1 day
   only:
-    - tags  
+    - master  
