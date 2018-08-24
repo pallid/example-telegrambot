@@ -6,7 +6,6 @@ deploy:
   script:
   - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
   - git push -f heroku master
-  - curl https://$HEROKU_APP_NAME.herokuapp.com/status
   artifacts:
     when: on_failure
     paths:
