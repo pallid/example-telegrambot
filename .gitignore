@@ -1,7 +1,9 @@
 src/wwwroot/*.xml
 *.log
 *.ospx
+
 oscript_modules/
+!oscript_modules/telegrambot/
 
 coverage/stat\.json
 

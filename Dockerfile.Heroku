@@ -2,5 +2,9 @@ FROM pallid/oscript-web-heroku:dev
 
 COPY src /app
 
+ARG TELEGRAM_BOT_TOKEN
+ARG LOGGING_LEVEL
+ARG LOGGING_CONSOLE
+
 # Ставим зависимости указанные в packagedef
-RUN curl -o deb oscript.io/Downloads/latest/deb && dpkg -i deb && cd /app && opm install -l 
+RUN curl -o deb oscript.io/Downloads/latest/deb && dpkg -i deb && cd /app && opm install -l

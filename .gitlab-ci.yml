@@ -1,0 +1,15 @@
+stages:
+  - deploy
+ 
+deploy:
+  stage: deploy
+  script:
+  - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
+  - git push -f heroku master
+  artifacts:
+    when: on_failure
+    paths:
+    - .
+    expire_in: 1 day
+  only:
+    - master  
