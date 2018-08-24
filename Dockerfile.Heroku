@@ -5,7 +5,4 @@ COPY src /app
 ARG TELEGRAM_BOT_TOKEN
 
 # Ставим зависимости указанные в packagedef
-RUN curl -o deb oscript.io/Downloads/latest/deb && dpkg -i deb && cd /app && opm install -l 
-
-# Пока нет в хабе
-#RUN cd ./oscript_modules/ && curl -o telegrambot.zip https://github.com/pallid/telegrambot/archive/master.zip && unzip telegrambot.zip -d /telegrambot
+RUN curl -o deb oscript.io/Downloads/latest/deb && dpkg -i deb && cd /app && opm install -l
