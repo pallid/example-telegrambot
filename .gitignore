@@ -3,7 +3,6 @@ src/wwwroot/*.xml
 *.ospx
 
 /oscript_modules/
-!/oscript_modules/telegrambot/
 
 coverage/stat\.json
 
