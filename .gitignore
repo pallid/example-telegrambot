@@ -2,8 +2,8 @@ src/wwwroot/*.xml
 *.log
 *.ospx
 
-oscript_modules/
-!oscript_modules/telegrambot/
+/oscript_modules/
+!/oscript_modules/telegrambot/
 
 coverage/stat\.json
 
@@ -12,3 +12,4 @@ bdd-exec\.xml
 coverage/
 diff.txt
 start.cmd
+
