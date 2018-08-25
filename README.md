@@ -3,4 +3,4 @@
 
 [Демо бот](https://t.me/oswebbot?start)
 
-[Библиотека telegrambot](https://github.com/pallid)
+[Библиотека telegrambot](https://github.com/pallid/telegrambot)
